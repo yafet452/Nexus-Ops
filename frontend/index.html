@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus TourOps</title>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <!-- Phosphor Icons for premium UI icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="screen glass-bg">
+      <div class="login-box sub-glass">
+        <div class="brand">
+          <i class="ph-fill ph-compass"></i>
+          <h1>Nexus Ops</h1>
+        </div>
+        <p class="subtitle">Internal Staff Dashboard</p>
+        
+        <form id="login-form">
+          <div class="input-group">
+            <i class="ph ph-envelope-simple"></i>
+            <input type="email" id="email" placeholder="Email Address" value="staff@nexus.com" required>
+          </div>
+          <div class="input-group">
+            <i class="ph ph-lock-key"></i>
+            <input type="password" id="password" placeholder="Password" value="password" required>
+          </div>
+          <button type="submit" class="primary-btn">
+            Sign In <i class="ph ph-arrow-right"></i>
+          </button>
+        </form>
+        <div class="hint">Use <strong>admin@nexus.com</strong> or <strong>staff@nexus.com</strong> to test roles.</div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD SCREEN -->
+    <div id="dashboard-screen" class="screen hidden">
+      <aside class="sidebar sub-glass">
+        <div class="brand">
+          <i class="ph-fill ph-compass"></i>
+          <h2>Nexus</h2>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#" class="nav-item active" data-target="overview">
+            <i class="ph ph-squares-four"></i> Overview
+          </a>
+          <a href="#" class="nav-item" data-target="tours">
+            <i class="ph ph-map-trifold"></i> My Tours
+          </a>
+          <a href="#" class="nav-item" data-target="availability">
+            <i class="ph ph-calendar-check"></i> Availability
+          </a>
+          <a href="#" class="nav-item admin-only" data-target="assignments">
+            <i class="ph ph-calendar-plus"></i> Auto-Assigner
+          </a>
+          <a href="#" class="nav-item" data-target="messages">
+            <i class="ph ph-chat-teardrop-dots"></i> Communications
+          </a>
+        </nav>
+
+        <div class="user-profile">
+          <img src="https://i.pravatar.cc/150?img=3" alt="Avatar" class="avatar">
+          <div class="user-info">
+            <h4 id="user-name">Jane Doe</h4>
+            <span id="user-role" class="role-badge">Tour Leader</span>
+          </div>
+          <button id="logout-btn" class="icon-btn"><i class="ph ph-sign-out"></i></button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <h2 id="page-title">Overview</h2>
+          <div class="top-actions">
+            <button class="notif-btn"><i class="ph ph-bell"></i><span class="badge">3</span></button>
+          </div>
+        </header>
+
+        <div class="content-area">
+          <!-- Overview Tab -->
+          <div id="view-overview" class="view-panel active">
+            <div class="stats-grid">
+              <div class="stat-card glass-card">
+                <i class="ph ph-calendar-star icon-bg violet"></i>
+                <div class="details">
+                  <p>Upcoming Tours</p>
+                  <h3>4</h3>
+                </div>
+              </div>
+              <div class="stat-card glass-card">
+                <i class="ph ph-users icon-bg blue"></i>
+                <div class="details">
+                  <p>Total Guests</p>
+                  <h3>128</h3>
+                </div>
+              </div>
+              <div class="stat-card glass-card">
+                <i class="ph ph-star icon-bg yellow"></i>
+                <div class="details">
+                  <p>Avg Rating</p>
+                  <h3>4.9</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="glass-card feed">
+                <h3><i class="ph ph-broadcast"></i> Live Updates</h3>
+                <ul class="activity-list" id="activity-list">
+                  <li><span class="dot violet"></span> Admin assigned "Grand Canyon 3-Day" to you. <small>Just now</small></li>
+                  <li><span class="dot green"></span> Guest list updated for "Yosemite Trek". <small>1 hr ago</small></li>
+                  <li><span class="dot blue"></span> New message in 'General Comms'. <small>3 hrs ago</small></li>
+                </ul>
+              </div>
+
+              <div class="glass-card next-tour">
+                <div class="tag">Next Up</div>
+                <h2>Grand Canyon 3-Day</h2>
+                <p><i class="ph ph-clock"></i> Starts tomorrow @ 6:00 AM</p>
+                <div class="tour-actions">
+                  <button class="primary-btn sm">View Itinerary</button>
+                  <button class="secondary-btn sm">Contact Driver</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tours Tab -->
+          <div id="view-tours" class="view-panel hidden">
+            <div class="glass-card">
+              <h3>Assigned Tours</h3>
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>Tour Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Grand Canyon 3-Day</td>
+                    <td>Oct 12 - Oct 15</td>
+                    <td><span class="status pending">Pending Start</span></td>
+                    <td><button class="icon-btn"><i class="ph ph-eye"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Yosemite Trek</td>
+                    <td>Oct 20 - Oct 22</td>
+                    <td><span class="status upcoming">Upcoming</span></td>
+                    <td><button class="icon-btn"><i class="ph ph-eye"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Zion Day Trip</td>
+                    <td>Oct 05 - Oct 05</td>
+                    <td><span class="status complete">Completed</span></td>
+                    <td><button class="icon-btn"><i class="ph ph-eye"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Availability Tab -->
+          <div id="view-availability" class="view-panel hidden">
+            <div class="glass-card availability-container">
+              <h3>Set Availability</h3>
+              <p class="subtitle">Select the dates you are unavailable to work.</p>
+              <form class="availability-form" id="avail-form">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label>Start Date</label>
+                    <input type="date" required>
+                  </div>
+                  <div class="input-group">
+                    <label>End Date</label>
+                    <input type="date" required>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label>Reason</label>
+                  <input type="text" placeholder="e.g. PTO, Doctor's appointment">
+                </div>
+                <button type="submit" class="primary-btn">Submit Block</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Auto Assigner (Admin only) -->
+          <div id="view-assignments" class="view-panel hidden">
+            <div class="glass-card">
+              <div class="flex-title">
+                <h3>Automated Assignment Engine</h3>
+                <button id="trigger-auto-btn" class="primary-btn magic-btn"><i class="ph ph-magic-wand"></i> Run Automation</button>
+              </div>
+              <p>Execute company rules to automatically map unassigned tours to available staff based on proximity and workload.</p>
+              
+              <div class="terminal-box">
+                 <div class="terminal-header">
+                     <span class="dot red"></span>
+                     <span class="dot yellow"></span>
+                     <span class="dot green"></span>
+                     <small>Console</small>
+                 </div>
+                 <div class="terminal-body" id="assign-logs">
+                    > System ready...
+                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Messages Tab -->
+          <div id="view-messages" class="view-panel hidden">
+            <div class="chat-container glass-card">
+               <div class="chat-sidebar">
+                  <div class="chat-channel active"># operations</div>
+                  <div class="chat-channel"># tour-leaders</div>
+                  <div class="chat-contact"><img src="https://i.pravatar.cc/150?img=11"> Admin Operations</div>
+               </div>
+               <div class="chat-main">
+                  <div class="chat-header">
+                    <h4># operations</h4>
+                  </div>
+                  <div class="chat-messages" id="chat-messages">
+                    <div class="msg"><b>Admin:</b> Has everyone updated their availability for October?</div>
+                    <div class="msg self"><b>You:</b> Yes, just submitted mine.</div>
+                  </div>
+                  <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type a message...">
+                    <button id="chat-send" class="icon-btn violet-bg"><i class="ph ph-paper-plane-right"></i></button>
+                  </div>
+               </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
